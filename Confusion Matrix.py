@@ -6,6 +6,7 @@ import pandas as pd
 
 import seaborn as sns
 import matplotlib.pyplot as plt
+from matplotlib import font_manager
 
 _CLASS_NAME = ['0', '1', '2']
 
@@ -50,8 +51,12 @@ normalized_confusion_matrix = normalized_confusion_matrix * 100
     axes[1].set_title('Normalized Confusion Matrix', fontsize=16, fontweight='bold')
     axes[1].set_ylabel('Predicted', fontweight='bold')
     axes[1].set_xlabel('Ground Truth', fontweight='bold')
-    axes[1].tick_params(axis='x', labelsize=12)
-    axes[1].tick_params(axis='y', labelsize=12)
+    
+    font_prop = font_manager.FontProperties(weight='bold', size=10)
+    axes[0].set_xticklabels(axes[0].get_xticklabels(), fontproperties=font_prop)
+    axes[0].set_yticklabels(axes[0].get_yticklabels(), fontproperties=font_prop)
+    axes[1].set_xticklabels(axes[1].get_xticklabels(), fontproperties=font_prop)
+    axes[1].set_yticklabels(axes[1].get_yticklabels(), fontproperties=font_prop)
 
     plt.tight_layout()
     plt.subplots_adjust(top=0.88)
